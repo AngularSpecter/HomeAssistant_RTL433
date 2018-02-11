@@ -1,0 +1,10 @@
+[Unit]
+Description=RTL_433 based home security sniffer
+After=syslog.target network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/etc/RFLink
+ExecStart=/bin/sh -c '/usr/local/bin/rtl_433 -f 319500000 -R 98 -F json -q | /usr/local/bin/INTERLOGIX.py' 
+Restart=on-failure
+RestartSec=42s
